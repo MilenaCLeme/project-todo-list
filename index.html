@@ -10,8 +10,12 @@
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   </header>
   <div>
-  <input type="texto-tarefa" id="texto-tarefa" name="texto-tarefa"> 
-  <button>enviar</button>
+    <label for="texto-tarefa">Criar Tarefa:</label>
+    <input type="text" id="texto-tarefa" required minlength="1" maxlength="30" size="35"> 
+    <button id="criar-tarefa">enviar</button>
+  </div>
+  <div id="tabela">
+
   </div>
   
   <script src="script.js"></script>
