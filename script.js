@@ -1,8 +1,9 @@
 let botao = document.getElementById('criar-tarefa');
-let elementoOl = document.getElementById('lista-tarefas')
+let elementoOl = document.getElementById('lista-tarefas');
+let elementoLi = document.getElementsByTagName('li');
+let ol = document.querySelector('lista-tarefas');
 criarElementoOl()
 clicarDoBotao()
-
 
 function criarElementoOl() {
   let elementoIdTabela =  document.getElementById('tabela')
@@ -21,9 +22,24 @@ function adicionaATarefa() {
   let elementoOl = document.getElementById('lista-tarefas')
   elementoOl.appendChild(elementoLi)
   elementoLi.innerHTML = textInput
+  elementoLi.addEventListener('click', adicionaCor)
   removeNoImput()
+
 }
 
 function removeNoImput() {
   document.getElementById('texto-tarefa').value = ''
 }
+
+function adicionaCor(event) {
+  let elemento = document.querySelector('.selected');
+  if (elemento === null) {
+    event.target.classList.add('selected');
+  } else {
+    elemento.classList.remove('selected');
+    event.target.classList.add('selected');
+  }
+}
+
+
+
