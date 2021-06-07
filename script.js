@@ -15,11 +15,6 @@ function clicarDoBotaoEnviar(){
 }
 
 function adicionaOElementoETexto() {
-  let elementoCriadoOl = document.getElementById('lista-tarefas')
-  let elementoLi = document.createElement('li')
-  elementoCriadoOl.appendChild(elementoLi);
 }
 
-
-let caputura = document.getElementById('texto-tarefa').value;
 
