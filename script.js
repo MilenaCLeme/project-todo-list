@@ -23,8 +23,8 @@ function adicionaATarefa() {
   elementoOl.appendChild(elementoLi)
   elementoLi.innerHTML = textInput
   elementoLi.addEventListener('click', adicionaCor)
+  elementoLi.addEventListener('dblclick', adicionaUmRiscoATarefa)
   removeNoImput()
-
 }
 
 function removeNoImput() {
@@ -41,5 +41,8 @@ function adicionaCor(event) {
   }
 }
 
-
+function adicionaUmRiscoATarefa(event){
+  console.log('funcionando');
+  event.target.classList.toggle('completed');
+}
 
