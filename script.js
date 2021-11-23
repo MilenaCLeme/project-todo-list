@@ -1,108 +1,64 @@
-const elementoIdTabela =  document.getElementById('tabela');
-const botaoEnviar = document.getElementById('criar-tarefa');
-const botaoApagaTudo = document.getElementById('apaga-tudo');
-const botaoApagaFinalizados = document.getElementById('remover-finalizados');
+const BOTAO_CRIAR_TABELA = document.getElementById('criar-tarefa');
+const INPUT_ESCREVER_TAREFA = document.getElementById('texto-tarefa');
+const OL_DA_TABELA = document.getElementById('lista-tarefas');
+const BOTAO_APAGA_TUDO = document.getElementById('apaga-tudo');
+const BOTAO_APAGA_FINALIZADOS = document.getElementById('remover-finalizados');
+const SALVAR_TODAS_AS_TAREFAS = document.getElementById('salvar-tarefas');
 
-
-function criarElementoOl() {
-  let elementoOl = document.createElement('ol')
-  elementoIdTabela.appendChild(elementoOl);
-  elementoOl.id = 'lista-tarefas';   
+function iniciandoAPagina() {
+  
 }
 
-function adicionaATarefa() {
-  let textInput = document.getElementById('texto-tarefa').value;
-  let elementoLi = document.createElement('li')
-  let elementoPai = document.getElementById('lista-tarefas');
-  elementoPai.appendChild(elementoLi)
-  elementoLi.innerHTML = textInput
-  elementoLi.addEventListener('click', adicionaCor)
-  elementoLi.addEventListener('dblclick', adicionaUmRiscoATarefa)
-  removeNoImput()
-}
-
-function removeNoImput() {
-  document.getElementById('texto-tarefa').value = ''
-}
-
-
-function adicionaCor(event) {
-  let elemento = document.querySelector('.selected');
-  if (elemento === null) {
-    event.target.classList.add('selected');
+function adicionarCorDaTarefa({ target }) {
+  const classNameColor = document.querySelector('.selected');
+  const tarefa = target;
+  if (classNameColor === null) {
+    tarefa.classList.add('selected');
   } else {
-    elemento.classList.remove('selected');
-    event.target.classList.add('selected');
+    classNameColor.classList.remove('selected');
+    tarefa.classList.add('selected');
   }
 }
 
-function adicionaUmRiscoATarefa(event){
-  event.target.classList.toggle('completed');
+function adicionarRiscoDaTarefa({ target }) {
+  const tarefa = target;
+  tarefa.classList.toggle('completed');
 }
 
+function adicionarTaregaATabela() {
+  const valorDoInput = INPUT_ESCREVER_TAREFA.value;
+  const criarLi = document.createElement('li');
+  criarLi.innerText = valorDoInput;
+  INPUT_ESCREVER_TAREFA.value = '';
+  OL_DA_TABELA.appendChild(criarLi);
+  criarLi.addEventListener('click', adicionarCorDaTarefa);
+  criarLi.addEventListener('dblclick', adicionarRiscoDaTarefa);
+}
+
+function salvarListaDoLocalStorage() {
+  const listaTarefa = document.querySelectorAll('li');
+  const novoArray = [];
+  listaTarefa.forEach((e) => {
+    novoArray.push(e.innerText);
+  });
+  console.log(novoArray);
+  localStorage.setItem('lista', JSON.stringify(novoArray));
+}
 
 function apagaTudoDaLista() {
-  let elementoPai = document.getElementById('lista-tarefas')
-  elementoPai.remove()
-  criarElementoOl()
-/*
-  let elementoPai = document.getElementById('lista-tarefas');
-  let listaCompleta = document.getElementsByTagName('li');
-  for(let index = 0; index < listaCompleta.length; index += 1) {
-    elementoPai.removeChild(listaCompleta[index])
-    index -= 1;
-  }
-*/
+  const listaTarefa = document.querySelectorAll('li');
+  listaTarefa.forEach((e) => e.remove());
+  salvarListaDoLocalStorage();
 }
 
-function apagaTarefasFinalizadas() {
-  let listaCompleta = document.getElementsByTagName('li');
-  let elementoPai = document.getElementById('lista-tarefas');
-  for(let index = 0; index < listaCompleta.length; index += 1) {
-    if (listaCompleta[index].classList.contains('completed')) {
-      elementoPai.removeChild(listaCompleta[index])
-      index -= 1;
-    }
-  }
+function apagaTarefaFinalizada() {
+  const tarefaFinalizada = document.querySelectorAll('.completed');
+  tarefaFinalizada.forEach((e) => e.remove());
+  salvarListaDoLocalStorage();
 }
 
-criarElementoOl();
-botaoEnviar.addEventListener('click', adicionaATarefa)
-botaoApagaTudo.addEventListener('click', apagaTudoDaLista)
-botaoApagaFinalizados.addEventListener('click', apagaTarefasFinalizadas)
-
-
-
-
-
-
-/*
-let botao = document.getElementById('criar-tarefa');
-let ol = document.querySelector('lista-tarefas');
-let botaoApagaTudo = document.getElementById('apaga-tudo');
-let botaoApagaFinalizados = document.getElementById('remover-finalizados');
-criarElementoOl()
-clicarDoBotao()
-
-
-function apagaTudoDaLista() {
-  let lista = document.getElementById('lista-tarefas');
-  lista.remove(); 
-}
-
-function apagaTarefasFinalizadas() {
-  let listaCompleta = document.getElementsByTagName('li');
-  let elementoOl = document.getElementById('lista-tarefas');
-  for(let index = 0; index < listaCompleta.length; index += 1) {
-    if (listaCompleta[index].classList.contains('completed')) {
-      elementoOl.removeChild(listaCompleta[index])
-      index -= 1;
-    }
-  }
-
-
-
-/*
-botaoApagaTudo.addEventListener('click', apagaTudoDaLista)
-botaoApagaFinalizados.addEventListener('click', apagaTarefasFinalizadas)
-*/
+BOTAO_CRIAR_TABELA.addEventListener('click', adicionarTaregaATabela);
+BOTAO_APAGA_TUDO.addEventListener('click', apagaTudoDaLista);
+BOTAO_APAGA_FINALIZADOS.addEventListener('click', apagaTarefaFinalizada);
+SALVAR_TODAS_AS_TAREFAS.addEventListener('click', salvarListaDoLocalStorage);
+iniciandoAPagina();
