@@ -13,18 +13,27 @@
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   </header>
   <div>
-    <input type="text" id="texto-tarefa" required minlength="1" maxlength="30" size="35"> 
-    <button id="criar-tarefa">enviar</button>
+    <div>
+      <input type="text" id="texto-tarefa" required minlength="1" maxlength="100" size="35"> 
+      <button id="criar-tarefa">enviar</button>
+    </div>
+    <div id="tabela">
+      <ol id="lista-tarefas">
+        
+      </ol>
+    </div>
+    <div>
+      <button id="apaga-tudo">Apaga tudo</button>
+      <button id="remover-finalizados">Remove finalizados</button>
+      <button id="salvar-tarefas">Salva todas as Tarefas</button>
+      <button id="mover-cima">Mover Tarefa para cima</button>
+      <button id="mover-baixo">Mover Tarefa para baixo</button>
+      <button id="remover-selecionado">Remove Selecionados</button>
+      <button id="adicionar-calendario">Adicionar do Calendario</button>
+    </div>
   </div>
-  <div id="tabela">
-    <ol id="lista-tarefas">
-      
-    </ol>
-  </div>
-  <div>
-    <button id="apaga-tudo">Apaga Toda Lista de Tarefas</button>
-    <button id="remover-finalizados">Apaga Tarefas finalizadas</button>
-    <button id="salvar-tarefas">Salva Lista de Tarefas</button>
+  <div id="calendario">
+
   </div>
   <script type="text/javascript" src="./script.js"></script>
 </body>
