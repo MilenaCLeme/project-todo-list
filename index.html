@@ -8,32 +8,44 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <header>
+  <header id="header">
     <h1>Minha Lista de Tarefas</h1>
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   </header>
-  <div>
-    <div>
-      <input type="text" id="texto-tarefa" required minlength="1" maxlength="100" size="35"> 
-      <button id="criar-tarefa">enviar</button>
+  <div id="principal">
+    <div id="input">
+      <div id="inputs">
+        <input type="text" id="texto-tarefa" required minlength="1" maxlength="100"> 
+        <button id="criar-tarefa">enviar</button>
+      </div>
+      <div id="tabela">
+        <ol id="lista-tarefas">
+          
+        </ol>
+      </div>
+      <div>
+        <button id="adicionar-calendario">Adicionar data</button>
+      </div>
+      <div id="calendario">
+    
+      </div>
+      <div>
+        <button id="mostrar">Mostrar Tarefas com datas</button>
+      </div>
     </div>
-    <div id="tabela">
-      <ol id="lista-tarefas">
-        
-      </ol>
-    </div>
-    <div>
+    <div id="botoes">
       <button id="apaga-tudo">Apaga tudo</button>
       <button id="remover-finalizados">Remove finalizados</button>
       <button id="salvar-tarefas">Salva todas as Tarefas</button>
       <button id="mover-cima">Mover Tarefa para cima</button>
       <button id="mover-baixo">Mover Tarefa para baixo</button>
       <button id="remover-selecionado">Remove Selecionados</button>
-      <button id="adicionar-calendario">Adicionar do Calendario</button>
     </div>
   </div>
-  <div id="calendario">
+  <div id="mostrar-tarefas">
+    <div id="item">
 
+    </div>
   </div>
   <script type="text/javascript" src="./script.js"></script>
 </body>
