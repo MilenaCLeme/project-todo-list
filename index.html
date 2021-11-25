@@ -2,26 +2,51 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Projeto To Do List</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <header>
+  <header id="header">
     <h1>Minha Lista de Tarefas</h1>
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   </header>
-  <div>
-    <input type="text" id="texto-tarefa" required minlength="1" maxlength="30" size="35"> 
-    <button id="criar-tarefa">enviar</button>
+  <div id="principal">
+    <div id="input">
+      <div id="inputs">
+        <input type="text" id="texto-tarefa" required minlength="1" maxlength="100"> 
+        <button id="criar-tarefa">enviar</button>
+      </div>
+      <div id="tabela">
+        <ol id="lista-tarefas">
+          
+        </ol>
+      </div>
+      <div>
+        <button id="adicionar-calendario">Adicionar data</button>
+        <button id="mostrar">Mostrar Tarefas com datas</button>
+      </div>
+      <div id="bloco">
+        <div id="calendario">
+      
+        </div>
+        <div id="mostrar-tarefas">
+          <div id="item">
+      
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="botoes">
+      <button id="apaga-tudo">Apaga tudo</button>
+      <button id="remover-finalizados">Remove finalizados</button>
+      <button id="salvar-tarefas">Salva todas as Tarefas</button>
+      <button id="mover-cima">Mover Tarefa para cima</button>
+      <button id="mover-baixo">Mover Tarefa para baixo</button>
+      <button id="remover-selecionado">Remove Selecionados</button>
+    </div>
   </div>
-  <div id="tabela">
-
-  </div>
-  <div>
-    <button id="apaga-tudo">Apaga Toda Lista</button>
-    <button id="remover-finalizados">Apaga Tarefas finalizadas</button>
-  </div>
-  
-  <script src="script.js"></script>
+  <script type="text/javascript" src="./script.js"></script>
 </body>
 </html>
